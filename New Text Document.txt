@@ -1,0 +1,8 @@
+1-product name 
+2-code or id 
+3-expaier
+4-name of the resourcer
+5-price
+6-tax
+and this table is sort and responsive scroll 
+and the maximum of name product is 15 chart's

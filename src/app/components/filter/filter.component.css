@@ -1,0 +1,6 @@
+td {
+    max-width: 150px; /* تعيين عرض أقصى للخلية */
+    white-space: nowrap; /* منع التفاف النص */
+    overflow: hidden; /* إخفاء النص الزائد */
+    text-overflow: ellipsis; /* إضافة ثلاث نقاط (...) إذا كان النص طويلاً */
+}

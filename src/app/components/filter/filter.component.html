@@ -1,0 +1,89 @@
+<div class="card">
+    <p-table
+        #dt2
+        [value]="customers"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <p-iconField iconPosition="left" class="ml-auto">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText 
+                    type="text" 
+                    
+                    placeholder="Search keyword" />
+            </p-iconField>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" class="flex align-items-center justify-content-center">
+        <tr>
+            <th pSortableColumn="name" style="width:16.66%">Name product <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="name" style="width:16.66%">country code <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="date" style="width:16.66%">expair <p-sortIcon field="date" />
+            </th>
+            <th pSortableColumn="name" style="width:16.66%">resourcer <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="price" style="width: 16.66%">price <p-sortIcon field="price" /></th>
+            <th style="width: 16.66%">Tax</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer class="align-items-center justify-content-center">
+        <tr>
+            <td title="{{ customer.name }}">
+                <img 
+                [alt]="customer.representative.name"
+                src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}"
+                width="32" 
+                style="vertical-align: middle" />
+                
+                    {{ customer.name | slice:0:15 }}<span *ngIf="customer.name.length > 15">...</span>
+                
+                
+            </td>
+            <td>
+                <img 
+                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" 
+                    [class]="'flag flag-' + customer.country.code" 
+                    style="width: 20px" />
+                <span class="ml-1 vertical-align-middle">
+                    {{ customer.country.code }}
+                </span>
+            </td>
+            <td>
+              
+                <span class="ml-1 vertical-align-middle">
+                  {{customer.date }}
+                </span>
+            </td>
+            <td>
+                    
+                    {{ customer.name }}
+                
+            </td>
+            <td>
+                {{ customer.balance | currency:'USD' }} 
+            </td>
+            <td>
+                3%
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5">No customers found.</td>
+        </tr>
+    </ng-template>
+    </p-table>
+</div>

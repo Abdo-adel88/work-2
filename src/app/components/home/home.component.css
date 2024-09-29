@@ -1,0 +1,9 @@
+.prime {
+
+    background-color: var(--gray-500);
+    color: var(--blue-900);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+
+}
+

@@ -28,6 +28,7 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { PaginatorModule } from 'primeng/paginator';
+import { FiltersComponent } from './components/filters/filters.component';
 
 
 
@@ -48,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TempletComponent,
     RadiobuttonComponent,
     SkeletonComponent,
+    FiltersComponent,
     
   ],
   imports: [

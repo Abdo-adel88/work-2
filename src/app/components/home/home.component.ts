@@ -1,52 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { DataServices } from 'src/app/core/service/data.service';
-import { Product } from 'src/app/core/interfaces/data'; // تأكد أن لديك تعريف Product
+import { Component } from '@angular/core';
+import { TableModule } from 'primeng/table';
+import { Product } from 'src/app/interfaces/data';
+import { DataService } from 'src/app/service/data.service';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  products: any
-  cols: any[] = [];
-  categories: any[] = [];  // خيارات الفلاتر لفئة المنتج
-  inventoryStatuses: any[] = [];  // خيارات الفلاتر لحالة المخزون
+export class HomeComponent {
 
-  constructor(private dataService: DataServices) {}
+  products!: Product[];
+
+  cols!: any[];
+  constructor(private productService: DataService) {}
 
   ngOnInit() {
-    this.products = this.dataService.getData(); // الحصول على البيانات من الخدمة
+    this.productService.getProductsMini().then((data) => {
+      this.products = data;
+  });
 
     this.cols = [
-      { field: 'name', header: 'اسم المنتج' },
-      { field: 'code', header: 'كود المنتج' },
-      { field: 'price', header: 'السعر' },
-      { field: 'category', header: 'الفئة' },
-      { field: 'quantity', header: 'الكمية' },
-      { field: 'inventoryStatus', header: 'حالة المخزون' },
-      { field: 'rating', header: 'التقييم' },
+      { field: 'code', header: 'Code' },
+      { field: 'code', header: 'Code' },
+      { field: 'name', header: 'Name' },
+      { field: 'category', header: 'Category' },
+      { field: 'quantity', header: 'Quantity' }
     ];
-
-    // إعداد خيارات الفلاتر
-  
-
-  
-  }
-
-  getSeverity(status: string): string {
-    switch (status) {
-      case 'unqualified':
-        return 'danger';
-      case 'qualified':
-        return 'success';
-      case 'new':
-        return 'info';
-      case 'negotiation':
-        return 'warning';
-      case 'renewal':
-        return '';
-    }
-    return '';
   }
 }

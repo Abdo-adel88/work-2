@@ -9,6 +9,7 @@ import { TempletComponent } from './components/templet/templet.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,9 @@ const routes: Routes = [
   },
   {
     path:'Skeleton',component:SkeletonComponent
+  },
+  {
+    path:'filters',component:FiltersComponent
   },
 
 ];
